@@ -24,7 +24,6 @@ class RootTableViewController: UITableViewController {
         ["Title" : "Supernatural", "Artist" : "Santana", "Year" : "1999", "Label" : "Arista", "Art" : UIImage(named: "supernatural")!]
     ]
 
-    @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         super.viewDidLoad()

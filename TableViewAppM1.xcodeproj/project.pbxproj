@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A067A16924860C41009AA78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067A16824860C41009AA78D /* AppDelegate.swift */; };
-		A067A16B24860C41009AA78D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067A16A24860C41009AA78D /* ViewController.swift */; };
 		A067A16E24860C41009AA78D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067A16C24860C41009AA78D /* Main.storyboard */; };
 		A067A17024860C47009AA78D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067A16F24860C47009AA78D /* Assets.xcassets */; };
 		A067A17324860C47009AA78D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067A17124860C47009AA78D /* LaunchScreen.storyboard */; };
@@ -16,6 +15,7 @@
 		A067A18924860C48009AA78D /* TableViewAppM1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067A18824860C48009AA78D /* TableViewAppM1UITests.swift */; };
 		A067A19924862482009AA78D /* AlbumTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067A19824862482009AA78D /* AlbumTableViewCell.swift */; };
 		A067A19D2486307E009AA78D /* AlbumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A067A19C2486307E009AA78D /* AlbumTableViewCell.xib */; };
+		A0BB6E2424898FF800375940 /* RootTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB6E2324898FF800375940 /* RootTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		A067A16524860C41009AA78D /* TableViewAppM1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAppM1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067A16824860C41009AA78D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A067A16A24860C41009AA78D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A067A16D24860C41009AA78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A067A16F24860C47009AA78D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A067A17224860C47009AA78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		A067A18A24860C48009AA78D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A067A19824862482009AA78D /* AlbumTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumTableViewCell.swift; sourceTree = "<group>"; };
 		A067A19C2486307E009AA78D /* AlbumTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlbumTableViewCell.xib; sourceTree = "<group>"; };
+		A0BB6E2324898FF800375940 /* RootTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +101,8 @@
 		A067A16724860C41009AA78D /* TableViewAppM1 */ = {
 			isa = PBXGroup;
 			children = (
+				A0BB6E2324898FF800375940 /* RootTableViewController.swift */,
 				A067A16824860C41009AA78D /* AppDelegate.swift */,
-				A067A16A24860C41009AA78D /* ViewController.swift */,
 				A067A19C2486307E009AA78D /* AlbumTableViewCell.xib */,
 				A067A19824862482009AA78D /* AlbumTableViewCell.swift */,
 				A067A16C24860C41009AA78D /* Main.storyboard */,
@@ -263,9 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A067A16B24860C41009AA78D /* ViewController.swift in Sources */,
 				A067A16924860C41009AA78D /* AppDelegate.swift in Sources */,
 				A067A19924862482009AA78D /* AlbumTableViewCell.swift in Sources */,
+				A0BB6E2424898FF800375940 /* RootTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

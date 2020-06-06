@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A038012D248BAC3C0056C7A8 /* NewAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038012C248BAC3C0056C7A8 /* NewAlbumViewController.swift */; };
 		A067A16924860C41009AA78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067A16824860C41009AA78D /* AppDelegate.swift */; };
 		A067A16E24860C41009AA78D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067A16C24860C41009AA78D /* Main.storyboard */; };
 		A067A17024860C47009AA78D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067A16F24860C47009AA78D /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A038012C248BAC3C0056C7A8 /* NewAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewAlbumViewController.swift; path = ../NewAlbumViewController.swift; sourceTree = "<group>"; };
 		A067A16524860C41009AA78D /* TableViewAppM1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAppM1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067A16824860C41009AA78D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A067A16D24860C41009AA78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				A0BB6E2324898FF800375940 /* RootTableViewController.swift */,
+				A038012C248BAC3C0056C7A8 /* NewAlbumViewController.swift */,
 				A067A16824860C41009AA78D /* AppDelegate.swift */,
 				A067A19C2486307E009AA78D /* AlbumTableViewCell.xib */,
 				A067A19824862482009AA78D /* AlbumTableViewCell.swift */,
@@ -272,6 +275,7 @@
 				A067A16924860C41009AA78D /* AppDelegate.swift in Sources */,
 				A06957DA248A99F7008E8C0B /* AlbumDetailViewController.swift in Sources */,
 				A06957DC248AB4CD008E8C0B /* AlbumsList.swift in Sources */,
+				A038012D248BAC3C0056C7A8 /* NewAlbumViewController.swift in Sources */,
 				A067A19924862482009AA78D /* AlbumTableViewCell.swift in Sources */,
 				A0BB6E2424898FF800375940 /* RootTableViewController.swift in Sources */,
 			);

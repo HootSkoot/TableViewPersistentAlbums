@@ -8,12 +8,14 @@
 
 import UIKit
 
-class AlbumDetailViewController: UIViewController {
+class AlbumDetailViewController: UIViewController, UITableViewDataSource {
 
     var selectedAlbum = Dictionary<String, AnyObject>()
     
     @IBOutlet weak var albumTitleLabel: UILabel!
     
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var artLabel: UIImageView!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -29,6 +31,10 @@ class AlbumDetailViewController: UIViewController {
     navigationItem.rightBarButtonItem = editButtonItem
 
         albumTitleLabel.text = selectedAlbum["Title"] as? String
+        artLabel.image = selectedAlbum["Art"] as? UIImage
+        yearLabel.text = selectedAlbum["Year"] as? String
+        artistLabel.text = selectedAlbum["Artist"] as? String
+        recordLabel.text = selectedAlbum["Label"] as? String
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,6 +42,20 @@ class AlbumDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let tempAl =  selectedAlbum["Songs"]! as! Array<String>
+        return tempAl.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
+        let rowData = selectedAlbum["Songs"] as! Array<String>
+        cell.textLabel?.text = rowData[indexPath.row]
+        return cell
+        
+    }
 
     /*
     // MARK: - Navigation

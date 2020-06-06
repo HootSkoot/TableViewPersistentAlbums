@@ -8,16 +8,18 @@
 
 import UIKit
 
-class RootTableViewController: UITableViewController {
+class RootTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     
     private static let cellTableIdentifier = "AlbumName"
     private var albums: AlbumsList!
+    var newAlbum: Dictionary<String, AnyObject>!
+    private var editingIndex: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         albums = AlbumsList()
-        
+        navigationItem.rightBarButtonItem = editButtonItem
         // Do any additional setup after loading the view, typically from a nib.
         /*let xib = UINib(nibName: "AlbumTableViewCell", bundle: nil)
         tableView.register(xib,
@@ -70,21 +72,67 @@ class RootTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-        let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
-        let listVC = segue.destination as! AlbumDetailViewController
-        
-        /*if indexPath.section == 0 {*/
-            // Font names list
-        //let familyName = familyNames[indexPath.row]
+        if segue.identifier == "AddAlbum" {
+            let listVC = segue.destination as! UINavigationController
+            let childVC = listVC.topViewController as! NewAlbumViewController
+            childVC.albumData = albums
+            
+            
+        } else if segue.identifier == "ShowAlbum" {
+            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            let listVC = segue.destination as! AlbumDetailViewController
             
             listVC.selectedAlbum = albums.getAlbum(index: indexPath.row)
             listVC.navigationItem.title = albums.getAlbum(index: indexPath.row)["Title"] as? String
+        } else {
+            let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
+            let listVC = segue.destination as! NewAlbumViewController
+            listVC.editingAlbum = true
+            editingIndex = indexPath.row
+            listVC.newAlbum = albums.getAlbum(index: indexPath.row)	
+        }
             /*} else {
             // Favorites list
             listVC.fontNames = favoritesList.favorites
             listVC.navigationItem.title = "Favorites"
             listVC.showsFavorites = true
         }*/
+    }
+    
+    @IBAction func unwindFromAdd(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? NewAlbumViewController
+        //let sourceViewController = sender.source as! NewAlbumViewController
+        //newAlbum = sourceViewController.newAlbum
+        {
+            if sourceViewController.editingAlbum == true {
+                albums.replaceAlbum(index: editingIndex, new: sourceViewController.newAlbum)
+                sourceViewController.editingAlbum = false
+            } else {
+                let newAlbum = sourceViewController.newAlbum
+                let newIndexPath = IndexPath(row: albums.getCount(), section: 0)
+                albums.addAlbum(new: newAlbum!)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+            
+        }
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            // Delete the row from the data source
+            albums.removeAlbum(index: indexPath.row)
+            
+            
+            tableView.deleteRows(at: [indexPath],
+                                 with: UITableViewRowAnimation.fade)
+        }
+        
     }
 
 

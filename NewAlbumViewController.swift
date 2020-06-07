@@ -10,12 +10,7 @@ import UIKit
 
 class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
 
-    var albumData: AlbumsList!
     private var songList: [String] = []
-    private var newTitle: String!
-    private var newArtist: String!
-    private var newYear: String!
-    private var newLabel: String!
     var newAlbum: Dictionary<String, AnyObject>!
     var editingAlbum = false
     
@@ -23,6 +18,11 @@ class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigatio
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        albumField.delegate = self
+        artistField.delegate = self
+        yearField.delegate = self
+        recordField.delegate = self
+        songField.delegate = self
         if editingAlbum == true {
             albumField.text = newAlbum["Title"] as? String
             artistField.text = newAlbum["Artist"] as? String
@@ -49,26 +49,21 @@ class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigatio
         songField.text = ""
     }
     
-    @IBOutlet weak var albumField: UITextField!
-    @IBOutlet weak var yearField: UITextField!
-    @IBOutlet weak var artistField: UITextField!
-    @IBOutlet weak var recordField: UITextField!
-    @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var songField: UITextField!
-    @IBOutlet weak var coverField: UIImageView!
+    @IBOutlet  var albumField: UITextField!
+    @IBOutlet  var yearField: UITextField!
+    @IBOutlet  var artistField: UITextField!
+    @IBOutlet  var recordField: UITextField!
+    @IBOutlet  var addButton: UIButton!
+    @IBOutlet  var songField: UITextField!
+    @IBOutlet  var coverField: UIImageView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     
-    /*
+
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -79,5 +74,9 @@ class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigatio
         newAlbum = ["Title": albumField.text!, "Artist": artistField.text!, "Year": yearField.text!, "Label": recordField.text!, "Art": coverField.image!, "Songs": songList] as Dictionary<String, AnyObject>
         //albumData.addAlbum(new: newAlbum as Dictionary<String, AnyObject>)
     }
-
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        super.touchesBegan(touches, with: event)
+    }
+	
 }

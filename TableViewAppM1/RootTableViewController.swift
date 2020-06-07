@@ -14,7 +14,7 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
     private static let cellTableIdentifier = "AlbumName"
     private var albums: AlbumsList!
     var newAlbum: Dictionary<String, AnyObject>!
-    private var editingIndex: Int!
+    private var editingIndexPath: IndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,7 +59,7 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
         return cell
  */
         
-        
+        //Get album detal for cells
         let cell = tableView.dequeueReusableCell(withIdentifier: RootTableViewController.cellTableIdentifier, for: indexPath)
         let rowData = albums.getAlbum(index: indexPath.row)
         cell.textLabel?.text = rowData["Title"]! as? String
@@ -72,23 +72,26 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        //checking segue types
         if segue.identifier == "AddAlbum" {
-            let listVC = segue.destination as! UINavigationController
-            let childVC = listVC.topViewController as! NewAlbumViewController
-            childVC.albumData = albums
+            //send existing album data to add new album
+            //let listVC = segue.destination as! UINavigationController
+            //let childVC = listVC.topViewController as! NewAlbumViewController
             
             
         } else if segue.identifier == "ShowAlbum" {
+            //checking whether segue is an edit or showing detail
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
             let listVC = segue.destination as! AlbumDetailViewController
             
             listVC.selectedAlbum = albums.getAlbum(index: indexPath.row)
             listVC.navigationItem.title = albums.getAlbum(index: indexPath.row)["Title"] as? String
         } else {
+            //let new view know its in edit mode, and send existing album
             let indexPath = tableView.indexPath(for: sender as! UITableViewCell)!
             let listVC = segue.destination as! NewAlbumViewController
             listVC.editingAlbum = true
-            editingIndex = indexPath.row
+            editingIndexPath = indexPath
             listVC.newAlbum = albums.getAlbum(index: indexPath.row)	
         }
             /*} else {
@@ -105,7 +108,8 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
         //newAlbum = sourceViewController.newAlbum
         {
             if sourceViewController.editingAlbum == true {
-                albums.replaceAlbum(index: editingIndex, new: sourceViewController.newAlbum)
+                albums.replaceAlbum(index: editingIndexPath.row, new: sourceViewController.newAlbum)
+                tableView.reloadRows(at: [editingIndexPath], with: .none)
                 sourceViewController.editingAlbum = false
             } else {
                 let newAlbum = sourceViewController.newAlbum

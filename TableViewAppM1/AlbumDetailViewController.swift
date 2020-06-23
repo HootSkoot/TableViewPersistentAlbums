@@ -10,7 +10,7 @@ import UIKit
 
 class AlbumDetailViewController: UIViewController, UITableViewDataSource {
 
-    var selectedAlbum = Dictionary<String, AnyObject>()
+    var selectedAlbum = Album(title: "", artist: "", year: "", label: "", art: nil, songs: [])
     
     @IBOutlet weak var albumTitleLabel: UILabel!
     
@@ -30,11 +30,11 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view.
     navigationItem.rightBarButtonItem = editButtonItem
 
-        albumTitleLabel.text = selectedAlbum["Title"] as? String
-        artLabel.image = selectedAlbum["Art"] as? UIImage
-        yearLabel.text = selectedAlbum["Year"] as? String
-        artistLabel.text = selectedAlbum["Artist"] as? String
-        recordLabel.text = selectedAlbum["Label"] as? String
+        albumTitleLabel.text = selectedAlbum?.title
+        artLabel.image = selectedAlbum?.art
+        yearLabel.text = selectedAlbum?.year
+        artistLabel.text = selectedAlbum?.artist
+        recordLabel.text = selectedAlbum?.label
     }
 
     override func didReceiveMemoryWarning() {
@@ -43,16 +43,16 @@ class AlbumDetailViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let tempAl =  selectedAlbum["Songs"]! as! Array<String>
-        return tempAl.count
+        let tempAl =  selectedAlbum?.songs
+        return tempAl!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "songCell", for: indexPath)
-        let rowData = selectedAlbum["Songs"] as! Array<String>
-        cell.textLabel?.text = rowData[indexPath.row]
+        let rowData = selectedAlbum?.songs
+        cell.textLabel?.text = rowData?[indexPath.row]
         return cell
         
     }

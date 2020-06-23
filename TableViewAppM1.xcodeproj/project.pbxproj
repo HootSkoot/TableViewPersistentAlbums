@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A038012D248BAC3C0056C7A8 /* NewAlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A038012C248BAC3C0056C7A8 /* NewAlbumViewController.swift */; };
+		A04A41EC24A15116008B6218 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04A41EB24A15116008B6218 /* Album.swift */; };
 		A067A16924860C41009AA78D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A067A16824860C41009AA78D /* AppDelegate.swift */; };
 		A067A16E24860C41009AA78D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A067A16C24860C41009AA78D /* Main.storyboard */; };
 		A067A17024860C47009AA78D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A067A16F24860C47009AA78D /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		A038012C248BAC3C0056C7A8 /* NewAlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewAlbumViewController.swift; path = ../NewAlbumViewController.swift; sourceTree = "<group>"; };
+		A04A41EB24A15116008B6218 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		A067A16524860C41009AA78D /* TableViewAppM1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewAppM1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A067A16824860C41009AA78D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A067A16D24860C41009AA78D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				A067A17424860C47009AA78D /* Info.plist */,
 				A06957D9248A99F7008E8C0B /* AlbumDetailViewController.swift */,
 				A06957DB248AB4CD008E8C0B /* AlbumsList.swift */,
+				A04A41EB24A15116008B6218 /* Album.swift */,
 			);
 			path = TableViewAppM1;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				A06957DC248AB4CD008E8C0B /* AlbumsList.swift in Sources */,
 				A038012D248BAC3C0056C7A8 /* NewAlbumViewController.swift in Sources */,
 				A067A19924862482009AA78D /* AlbumTableViewCell.swift in Sources */,
+				A04A41EC24A15116008B6218 /* Album.swift in Sources */,
 				A0BB6E2424898FF800375940 /* RootTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

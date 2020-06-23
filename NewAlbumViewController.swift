@@ -11,8 +11,9 @@ import UIKit
 class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
 
     private var songList: [String] = []
-    var newAlbum: Dictionary<String, AnyObject>!
+    var newAlbum = Album(title: "", artist: "", year: "", label: "", art: nil, songs: [])
     var editingAlbum = false
+    
     
     
     
@@ -24,13 +25,13 @@ class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigatio
         recordField.delegate = self
         songField.delegate = self
         if editingAlbum == true {
-            albumField.text = newAlbum["Title"] as? String
-            artistField.text = newAlbum["Artist"] as? String
-            yearField.text = newAlbum["Year"] as? String
-            recordField.text = newAlbum["Label"] as? String
-            coverField.image = newAlbum["Art"] as? UIImage
-            songList = newAlbum["Songs"] as! [String]
-            navigationItem.title = "Editing " + (newAlbum["Title"] as! String)
+            albumField.text = newAlbum?.title
+            artistField.text = newAlbum?.artist
+            yearField.text = newAlbum?.year
+            recordField.text = newAlbum?.label
+            coverField.image = newAlbum?.art
+            songList = (newAlbum?.songs)!
+            navigationItem.title = "Editing " + (newAlbum?.title)!
         }
         
     }
@@ -71,7 +72,7 @@ class NewAlbumViewController: UIViewController, UITextFieldDelegate, UINavigatio
         
         
         
-        newAlbum = ["Title": albumField.text!, "Artist": artistField.text!, "Year": yearField.text!, "Label": recordField.text!, "Art": coverField.image!, "Songs": songList] as Dictionary<String, AnyObject>
+        newAlbum = Album(title: albumField.text!, artist: artistField.text!, year: yearField.text!, label: recordField.text!, art: coverField.image!, songs: songList)
         //albumData.addAlbum(new: newAlbum as Dictionary<String, AnyObject>)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

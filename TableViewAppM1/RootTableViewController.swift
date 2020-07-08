@@ -22,6 +22,8 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
         navigationItem.rightBarButtonItem = editButtonItem
         if let savedAlbums = loadAlbums() {
             albums += savedAlbums
+        } else {
+            loadSampleAlbums()
         }
         // Do any additional setup after loading the view, typically from a nib.
         /*let xib = UINib(nibName: "AlbumTableViewCell", bundle: nil)
@@ -42,6 +44,23 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
     }
 
     // MARK: - Table view data source
+    
+    private func loadSampleAlbums(){
+        let album1 = Album(title : "Thriller", artist : "Michael Jackson", year : "1982", label : "Epic", art : UIImage(named: "Michael_Jackson_-_Thriller")!,
+        songs: ["1. Wanna be startin something 6:02", "2. Baby be mine 4:20", "3. The Girl is Mine 3:41", "4. Thriller 5:57", "5. Beat it 4:18", "6. Billie Jean 4:54", "7. Human Nature 4:07",
+        "8. P.Y.T. 4:59", "The Lady in My Life 4:59"])
+        let album2 = Album(title : "FFVII Remake OST", artist : "Square Enix", year : "2020", label : "Square Enix", art : UIImage(named: "ff7r")!, songs: ["1. Those who fight further 3:50", "2. One Winged Angel 11:20"])
+        let album3 = Album(title : "The Bodyguard", artist : "Whitney Houston", year : "1992", label : "BMG", art : UIImage(named: "Bodyguard")!, songs:["1. I will always love you 4:35"])
+        let album4 = Album(title : "Purple Rain", artist : "Prince", year : "1984", label : "Warner", art : UIImage(named: "purplerain")!, songs: ["1. Purple Rain 8:41", "2. Let's go crazy 4:39"])
+        let album5 = Album(title : "Rumors", artist : "Fleetwood Mac", year : "1977", label : "Warner", art : UIImage(named: "rumors")!, songs: ["1. Go your own way 3:43", "2. The Chain 4:30"])
+        let album6 = Album(title : "Hotel California", artist : "Eagles", year : "1976", label : "Asylum", art : UIImage(named: "Hotel cal")!, songs: ["1. Hotel California 6:30", "2. Life in the fast lane 4:46"])
+        let album7 = Album(title : "Chromatica", artist : "Lady Gaga", year : "2020", label : "Interscope", art : UIImage(named: "chromatica")!, songs: ["1. Rain on me 3:02", "2. Sour Candy 2:37", "3. Sine from Above 4:04"])
+        let album8 = Album(title : "Lemonade", artist : "Beyonce", year : "2016", label : "Parkwood", art : UIImage(named: "Lemonade")!, songs: ["1. Hold Up 3:41", "2. Pray you catch me 3:15"])
+        let album9 = Album(title : "21", artist : "Adele", year : "2011", label : "Columbia", art : UIImage(named: "21")!, songs: ["1. Rolling in the deep 3:49", "2. Rumor has it 3:43"])
+        let album10 = Album(title : "Supernatural", artist : "Santana", year : "1999", label : "Arista", art : UIImage(named: "supernatural")!, songs: ["1. Smooth 4:56", "2. Maria Maria 4:21"])
+        
+        albums += [album1,album2,album3,album4,album5,album6,album7,album8,album9,album10] as! Array<Album>
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return albums.count
@@ -53,11 +72,11 @@ class RootTableViewController: UITableViewController, UINavigationControllerDele
             as! AlbumTableViewCell
         
         let rowData = albums[indexPath.row]
-        cell.album = rowData["Title"]! as! String
-        cell.artist = rowData["Artist"]! as! String
-        cell.year = rowData["Year"]! as! String
-        cell.label = rowData["Label"]! as! String
-        cell.artLabel.image = (rowData["Art"]! as! UIImage)
+        cell.album = rowData[title]! as! String
+        cell.artist = rowData[artist]! as! String
+        cell.year = rowData[year]! as! String
+        cell.label = rowData[label]! as! String
+        cell.artLabel.image = (rowData[art]! as! UIImage)
         
         return cell
  */
